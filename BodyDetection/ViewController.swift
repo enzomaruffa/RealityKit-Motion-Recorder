@@ -20,10 +20,14 @@ class ViewController: UIViewController, ARSessionDelegate {
     let characterOffset: SIMD3<Float> = [-1.0, 0, 0] // Offset the character by one meter to the left
     let characterAnchor = AnchorEntity()
     
+    var characterTree: RKJointTree?
+    
     // A tracked raycast which is used to place the character accurately
     // in the scene wherever the user taps.
     var placementRaycast: ARTrackedRaycast?
     var tapPlacementAnchor: AnchorEntity?
+    
+    var timerUpdater: Timer?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -65,6 +69,34 @@ class ViewController: UIViewController, ARSessionDelegate {
         for anchor in anchors {
             guard let bodyAnchor = anchor as? ARBodyAnchor else { continue }
             
+            if timerUpdater == nil {
+                
+                print("Creating timer")
+                
+                timerUpdater = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { (_) in
+                    
+                    print("Running timer")
+                    
+                    if let character = self.character, let characterTree = self.characterTree {
+                        
+                        print("  Running timer de facto")
+                        
+                        let jointModelTransforms = bodyAnchor.skeleton.jointModelTransforms.map( { Transform(matrix: $0) })
+                        let jointNames = character.jointNames
+                        
+                        let joints = Array(zip(jointNames, jointModelTransforms))
+                        
+                        characterTree.updateJoints(from: joints, usingAbsoluteTranslation: true)
+                        
+                        characterTree.printJointsBFS()
+                        
+                    }
+                    
+                })
+                
+                timerUpdater?.fire()
+            }
+            
             // Update the position of the character anchor's position.
             let bodyPosition = simd_make_float3(bodyAnchor.transform.columns.3)
             characterAnchor.position = bodyPosition + characterOffset
@@ -78,7 +110,14 @@ class ViewController: UIViewController, ARSessionDelegate {
                 // 1. the body anchor was detected and
                 // 2. the character was loaded.
                 characterAnchor.addChild(character)
+                
+                let jointModelTransforms = bodyAnchor.skeleton.jointModelTransforms.map( { Transform(matrix: $0) })
+                let jointNames = character.jointNames
+                
+                let joints = Array(zip(jointNames, jointModelTransforms))
+                characterTree = RKJointTree(from: joints, usingAbsoluteTranslation: true)
             }
         }
     }
+
 }
