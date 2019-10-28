@@ -17,7 +17,7 @@ class ViewController: UIViewController, ARSessionDelegate {
     
     // The 3D character to display.
     var character: BodyTrackedEntity?
-    let characterOffset: SIMD3<Float> = [-1.0, 0, 0] // Offset the character by one meter to the left
+    let characterOffset: SIMD3<Float> = [0.7, 0, 0] // Offset the character by one meter to the left
     let characterAnchor = AnchorEntity()
     
     var characterTree: RKJointTree?
@@ -28,6 +28,8 @@ class ViewController: UIViewController, ARSessionDelegate {
     var tapPlacementAnchor: AnchorEntity?
     
     var timerUpdater: Timer?
+    
+    @IBOutlet weak var recordButton: UIButton!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -79,8 +81,6 @@ class ViewController: UIViewController, ARSessionDelegate {
                     
                     if let character = self.character, let characterTree = self.characterTree {
                         
-                        print("  Running timer de facto")
-                        
                         let jointModelTransforms = bodyAnchor.skeleton.jointModelTransforms.map( { Transform(matrix: $0) })
                         let jointNames = character.jointNames
                         
@@ -88,7 +88,7 @@ class ViewController: UIViewController, ARSessionDelegate {
                         
                         characterTree.updateJoints(from: joints, usingAbsoluteTranslation: true)
                         
-                        characterTree.printJointsBFS()
+//                        characterTree.printJointsBFS()
                         
                     }
                     
@@ -120,4 +120,33 @@ class ViewController: UIViewController, ARSessionDelegate {
         }
     }
 
+    @IBAction func recordPosition(_ sender: Any) {
+        
+        if let characterTree = self.characterTree {
+            self.recordButton.isEnabled = false
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                // get tree positions
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .prettyPrinted
+
+                do {
+                    let jsonData = try encoder.encode(characterTree)
+
+                    if let jsonString = String(data: jsonData, encoding: .utf8) {
+                        print(jsonString)
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+                // open alert asking name
+                
+                // save tree in document
+                
+            }
+        }
+        
+    }
+    
 }

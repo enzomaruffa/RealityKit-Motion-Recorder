@@ -9,7 +9,7 @@
 import RealityKit
 
 /// A tree representing an skeleton's joints
-class RKJointTree {
+class RKJointTree: Codable {
     
     /// An optional RKJoint with the tree's root
     var rootJoint: RKJoint?
@@ -62,9 +62,9 @@ class RKJointTree {
                 // If somehow a joint is repeated, we just update it's position
                 if let existingJoint = ancestorJoint.childrenJoints.first(where: { $0.name == jointName} )  {
                     if usingAbsoluteTranslation {
-                        existingJoint.relativeTranslation = joint.1.translation - ancestorJoint.absoluteTranslation
+                        existingJoint.relativeTranslations.append(joint.1.translation - ancestorJoint.absoluteTranslation)
                     } else {
-                        existingJoint.relativeTranslation = joint.1.translation
+                        existingJoint.relativeTranslations.append(joint.1.translation)
                     }
                     print("Repeated joint found with hierarchy \(joint.0)")
                 } else {

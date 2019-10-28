@@ -15,12 +15,24 @@ class RKJoint: Codable {
     let name: String
     
     /// A SIMD3<Float> with the joint's position relative to it's parent
-    var relativeTranslation: SIMD3<Float>
+    var relativeTranslation: SIMD3<Float> {
+        let totalValues = relativeTranslations.reduce(SIMD3<Float>.zero, { $0 + $1 } )
+        let count = Float(relativeTranslations.count)
+        return SIMD3<Float>(x: totalValues.x / count, y: totalValues.y / count, z: totalValues.z / count)
+    }
 //    {
 //        didSet {
 //            self.absoluteTranslation = absoluteTranslation - oldValue + relativeTranslation
 //        }
 //    }
+    
+    var relativeTranslations: [SIMD3<Float>] = [] {
+        didSet {
+            if relativeTranslations.count > 9 {
+                relativeTranslations.removeFirst()
+            }
+        }
+    }
     
     /**
         A computed property SIMD3<Float> with the joint's absolute position (relative to the scene anchor).
@@ -36,7 +48,20 @@ class RKJoint: Codable {
     }
     
     /// A SIMD4<Float> with the joint's position relative to it's parent
-    var rotation: SIMD4<Float>
+    var rotation: SIMD4<Float> {
+        let totalValues = rotations.reduce(SIMD4<Float>.zero, { $0 + $1 } )
+        let count = Float(rotations.count)
+        return SIMD4<Float>(x: totalValues.x / count, y: totalValues.y / count, z: totalValues.z / count, w: totalValues.w / count)
+    }
+    
+    var rotations: [SIMD4<Float>] = [] {
+        didSet {
+            if rotations.count > 9 {
+                rotations.removeFirst()
+            }
+        }
+    }
+
     
     /// A list of the joint's childreni
     var childrenJoints: [RKJoint]
@@ -60,8 +85,8 @@ class RKJoint: Codable {
     /// Initializes a joint using it's name, rotation and translation
     init(jointName: String, rotation: SIMD4<Float>, translation: SIMD3<Float>) {
         self.name = jointName
-        self.relativeTranslation = translation
-        self.rotation = rotation
+        self.relativeTranslations = [translation]
+        self.rotations = [rotation]
         self.childrenJoints = []
     }
     
@@ -175,18 +200,18 @@ class RKJoint: Codable {
     func update(newTransform: Transform, usingAbsoluteTranslation: Bool) {
 
         if usingAbsoluteTranslation {
-            relativeTranslation = newTransform.translation - (parent?.absoluteTranslation ?? .zero)
+            relativeTranslations.append(newTransform.translation - (parent?.absoluteTranslation ?? .zero))
         } else {
-            relativeTranslation = newTransform.translation
+            relativeTranslations.append(newTransform.translation)
         }
         
-        rotation = SIMD4<Float>(newTransform.rotation.imag, newTransform.rotation.real)
+        rotations.append(SIMD4<Float>(newTransform.rotation.imag, newTransform.rotation.real))
     }
 }
 
 
 extension RKJoint: CustomStringConvertible {
     var description: String {
-        return "\(name) | absolute: \(absoluteTranslation)"
+        return "\(name) | absolute: \(absoluteTranslation) | rotation: \(rotation)"
     }
 }
