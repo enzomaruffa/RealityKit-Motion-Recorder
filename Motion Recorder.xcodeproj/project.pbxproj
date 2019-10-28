@@ -22,7 +22,7 @@
 		0C0AADE32290B23100E0502A /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
 		0C71C055228FA198003621C4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0C8C7867228387D2006A6EE1 /* character */ = {isa = PBXFileReference; lastKnownFileType = folder; path = character; sourceTree = "<group>"; };
-		2F60E1D822631E0E00357E98 /* BodyDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BodyDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F60E1D822631E0E00357E98 /* Motion Recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Motion Recorder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F60E1DA22631E0F00357E98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F60E1DC22631E0F00357E98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2F60E1E122631E0F00357E98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -30,8 +30,8 @@
 		2F60E1E622631E0F00357E98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F60E1EB22631E0F00357E98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		718E55BB2289F8FF00A9B13B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		D34ABD00D34AB41000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
-		D3749170D374E6D000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		D34ABD00D34AB41000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		D3749170D374E6D000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 		2F60E1BB22631DCF00357E98 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2F60E1D822631E0E00357E98 /* BodyDetection.app */,
+				2F60E1D822631E0E00357E98 /* Motion Recorder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +85,6 @@
 			children = (
 				D34ABD00D34AB41000000001 /* LICENSE.txt */,
 			);
-			name = LICENSE;
 			path = LICENSE;
 			sourceTree = "<group>";
 		};
@@ -100,22 +99,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2F60E1D722631E0E00357E98 /* BodyDetection */ = {
+		2F60E1D722631E0E00357E98 /* Motion Recorder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2F60E1EE22631E0F00357E98 /* Build configuration list for PBXNativeTarget "BodyDetection" */;
+			buildConfigurationList = 2F60E1EE22631E0F00357E98 /* Build configuration list for PBXNativeTarget "Motion Recorder" */;
 			buildPhases = (
 				2F60E1D422631E0E00357E98 /* Sources */,
 				2F60E1D522631E0E00357E98 /* Frameworks */,
 				2F60E1D622631E0E00357E98 /* Resources */,
-				71D3424E228B14010005E04E,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BodyDetection;
+			name = "Motion Recorder";
 			productName = Simple;
-			productReference = 2F60E1D822631E0E00357E98 /* BodyDetection.app */;
+			productReference = 2F60E1D822631E0E00357E98 /* Motion Recorder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -134,7 +132,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2F60E1B522631DCF00357E98 /* Build configuration list for PBXProject "BodyDetection" */;
+			buildConfigurationList = 2F60E1B522631DCF00357E98 /* Build configuration list for PBXProject "Motion Recorder" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -147,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2F60E1D722631E0E00357E98 /* BodyDetection */,
+				2F60E1D722631E0E00357E98 /* Motion Recorder */,
 			);
 		};
 /* End PBXProject section */
@@ -328,7 +326,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9FBK2WPJX;
 				ENABLE_RCPROJECT_COMPILATION = YES;
 				ENABLE_USDZ_COMPILATION = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/BodyDetection/Info.plist";
@@ -337,8 +335,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.BodyDetection${SAMPLE_CODE_DISAMBIGUATOR}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.enzomaruffa.motionRecorder;
+				PRODUCT_NAME = "Motion Recorder";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -353,7 +351,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9FBK2WPJX;
 				ENABLE_RCPROJECT_COMPILATION = YES;
 				ENABLE_USDZ_COMPILATION = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/BodyDetection/Info.plist";
@@ -362,8 +360,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.BodyDetection${SAMPLE_CODE_DISAMBIGUATOR}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.enzomaruffa.motionRecorder;
+				PRODUCT_NAME = "Motion Recorder";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -374,7 +372,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2F60E1B522631DCF00357E98 /* Build configuration list for PBXProject "BodyDetection" */ = {
+		2F60E1B522631DCF00357E98 /* Build configuration list for PBXProject "Motion Recorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2F60E1CF22631DD100357E98 /* Debug */,
@@ -383,7 +381,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2F60E1EE22631E0F00357E98 /* Build configuration list for PBXNativeTarget "BodyDetection" */ = {
+		2F60E1EE22631E0F00357E98 /* Build configuration list for PBXNativeTarget "Motion Recorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2F60E1EC22631E0F00357E98 /* Debug */,
