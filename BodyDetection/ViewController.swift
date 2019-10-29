@@ -75,7 +75,7 @@ class ViewController: UIViewController, ARSessionDelegate {
                 
                 print("Creating timer")
                 
-                timerUpdater = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { (_) in
+                timerUpdater = Timer.scheduledTimer(withTimeInterval: 0.22, repeats: true, block: { (_) in
                     
                     print("Running timer")
                     
@@ -120,30 +120,79 @@ class ViewController: UIViewController, ARSessionDelegate {
         }
     }
 
+    fileprivate func saveInDocument(_ title: String, _ text: String) {
+        // save tree in document
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            
+            let fileURL = dir.appendingPathComponent(title)
+            
+            //writing
+            do {
+                try text.write(to: fileURL, atomically: false, encoding: .utf8)
+            }
+            catch {/* error handling here */}
+            
+        }
+    }
+    
+    fileprivate func createAlert(_ jsonString: String) {
+        // open alert asking name
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Nome da posição", message: "Qual o título do documento?", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text = "Texto base"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
+            
+            print("Title: \(textField.text)")
+            
+            guard textField.text!.count > 0 else  {
+                return
+            }
+            self.saveInDocument(textField.text!, jsonString)
+            
+        }))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func recordPosition(_ sender: Any) {
         
         if let characterTree = self.characterTree {
             self.recordButton.isEnabled = false
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                
+                characterTree.canUpdate = false
+                
+                let immutableTree = RKImmutableJointTree(from: characterTree)
+                
                 // get tree positions
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = .prettyPrinted
 
                 do {
-                    let jsonData = try encoder.encode(characterTree)
+                    let jsonData = try encoder.encode(immutableTree)
 
                     if let jsonString = String(data: jsonData, encoding: .utf8) {
-                        print(jsonString)
+                        print("JSON: \(jsonString)")
+
+                        self.createAlert(jsonString)
+                        
+                        
                     }
+                    
                 } catch {
                     print(error.localizedDescription)
                 }
                 
-                // open alert asking name
-                
-                // save tree in document
-                
+                characterTree.canUpdate = true
             }
         }
         

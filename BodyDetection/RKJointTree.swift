@@ -23,6 +23,8 @@ class RKJointTree: Codable {
         return nil
     }
     
+    var canUpdate = true
+    
     ///
     init() { }
     
@@ -87,25 +89,22 @@ class RKJointTree: Codable {
     ///TODO: Optimize since we already know where each joint is in the tree
     func updateJoints(from list: [(String, Transform)], usingAbsoluteTranslation: Bool) {
         
-        // Separates our joint name in a list with it`s original hierarchy
-        var hierachicalJoints = list.map( { ($0.0.components(separatedBy: "/"), $0.1)} )
-        hierachicalJoints.sort(by: { $0.0.count < $1.0.count } )
-        
-        // Updates every joint
-        for joint in hierachicalJoints {
-            if let jointName = joint.0.last,
-                let existingJoint = rootJoint?.findSelfOrDescendantBy(name: jointName) {
-                
-//                print("\nUpdating joint...")
-//                print("    Updating \(jointName) from \(existingJoint.relativeTranslation) and \(existingJoint.absoluteTranslation) using absolute as \(usingAbsoluteTranslation).")
-//                print("    New translation is \(joint.1.translation).")
-                
-                existingJoint.update(newTransform: joint.1, usingAbsoluteTranslation: usingAbsoluteTranslation)
-                
-//                print("    Updated \(jointName) to \(existingJoint.relativeTranslation) and \(existingJoint.absoluteTranslation)")
-                
+        if canUpdate {
+            // Separates our joint name in a list with it`s original hierarchy
+            var hierachicalJoints = list.map( { ($0.0.components(separatedBy: "/"), $0.1)} )
+            hierachicalJoints.sort(by: { $0.0.count < $1.0.count } )
+            
+            // Updates every joint
+            for joint in hierachicalJoints {
+                if let jointName = joint.0.last,
+                    let existingJoint = rootJoint?.findSelfOrDescendantBy(name: jointName) {
+                       
+                    existingJoint.update(newTransform: joint.1, usingAbsoluteTranslation: usingAbsoluteTranslation)
+                     
+                }
             }
         }
+        
     }
     
     func printJointsBFS() {

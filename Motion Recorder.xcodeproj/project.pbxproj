@@ -17,6 +17,8 @@
 		2F60E1E722631E0F00357E98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F60E1E522631E0F00357E98 /* LaunchScreen.storyboard */; };
 		471E6111236733D30064DA96 /* RKJoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471E610F236733D30064DA96 /* RKJoint.swift */; };
 		471E6112236733D30064DA96 /* RKJointTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471E6110236733D30064DA96 /* RKJointTree.swift */; };
+		471E6114236746DD0064DA96 /* RKImmutableJoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471E6113236746DD0064DA96 /* RKImmutableJoint.swift */; };
+		471E6116236746E60064DA96 /* RKImmutableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471E6115236746E60064DA96 /* RKImmutableTree.swift */; };
 		718E55BC2289F8FF00A9B13B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 718E55BB2289F8FF00A9B13B /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		2F60E1EB22631E0F00357E98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		471E610F236733D30064DA96 /* RKJoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKJoint.swift; sourceTree = "<group>"; };
 		471E6110236733D30064DA96 /* RKJointTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKJointTree.swift; sourceTree = "<group>"; };
+		471E6113236746DD0064DA96 /* RKImmutableJoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKImmutableJoint.swift; sourceTree = "<group>"; };
+		471E6115236746E60064DA96 /* RKImmutableTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKImmutableTree.swift; sourceTree = "<group>"; };
 		718E55BB2289F8FF00A9B13B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		D34ABD00D34AB41000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D3749170D374E6D000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 				2F60E1E322631E0F00357E98 /* Assets.xcassets */,
 				2F60E1E522631E0F00357E98 /* LaunchScreen.storyboard */,
 				2F60E1EB22631E0F00357E98 /* Info.plist */,
+				471E6113236746DD0064DA96 /* RKImmutableJoint.swift */,
+				471E6115236746E60064DA96 /* RKImmutableTree.swift */,
 			);
 			path = BodyDetection;
 			sourceTree = "<group>";
@@ -181,7 +187,9 @@
 				471E6111236733D30064DA96 /* RKJoint.swift in Sources */,
 				2F60E1DD22631E0F00357E98 /* ViewController.swift in Sources */,
 				0C0AADE42290B23100E0502A /* MessageLabel.swift in Sources */,
+				471E6116236746E60064DA96 /* RKImmutableTree.swift in Sources */,
 				2F60E1DB22631E0F00357E98 /* AppDelegate.swift in Sources */,
+				471E6114236746DD0064DA96 /* RKImmutableJoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
