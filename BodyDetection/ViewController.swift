@@ -126,11 +126,15 @@ class ViewController: UIViewController, ARSessionDelegate {
             
             let fileURL = dir.appendingPathComponent(title)
             
+            print(fileURL)
+            
             //writing
             do {
                 try text.write(to: fileURL, atomically: false, encoding: .utf8)
             }
-            catch {/* error handling here */}
+            catch {
+                print(error.localizedDescription)
+            }
             
         }
     }
@@ -166,34 +170,32 @@ class ViewController: UIViewController, ARSessionDelegate {
         
         if let characterTree = self.characterTree {
             self.recordButton.isEnabled = false
+            self.recordButton.alpha = 0.1
+                
+            characterTree.canUpdate = false
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                
-                characterTree.canUpdate = false
-                
-                let immutableTree = RKImmutableJointTree(from: characterTree)
-                
-                // get tree positions
-                let encoder = JSONEncoder()
-                encoder.outputFormatting = .prettyPrinted
+            let immutableTree = RKImmutableJointTree(from: characterTree)
+            
+            // get tree positions
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
 
-                do {
-                    let jsonData = try encoder.encode(immutableTree)
+            do {
+                let jsonData = try encoder.encode(immutableTree)
 
-                    if let jsonString = String(data: jsonData, encoding: .utf8) {
-                        print("JSON: \(jsonString)")
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    print("JSON: \(jsonString)")
 
-                        self.createAlert(jsonString)
-                        
-                        
-                    }
-                    
-                } catch {
-                    print(error.localizedDescription)
+                    self.createAlert(jsonString)
                 }
-                
-                characterTree.canUpdate = true
+            } catch {
+                print(error.localizedDescription)
             }
+            
+            self.recordButton.isEnabled = true
+            self.recordButton.alpha = 1
+            
+            characterTree.canUpdate = true
         }
         
     }

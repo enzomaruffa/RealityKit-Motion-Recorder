@@ -8,7 +8,7 @@
 
 import RealityKit
 
-class RKImmutableJoint: Codable {
+class RKImmutableJoint: Encodable {
     
     /// A String with the joint's name
     let name: String
@@ -91,6 +91,31 @@ class RKImmutableJoint: Codable {
         
         return findDescendantBy(name: name)
     }
+    
+    
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case relativeTranslation
+        case absoluteTranslation
+        case rotation
+        case childrenJoints
+        //case parent
+        case descendantCount
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(relativeTranslation, forKey: .relativeTranslation)
+        try container.encode(absoluteTranslation, forKey: .absoluteTranslation)
+        try container.encode(rotation, forKey: .rotation)
+        try container.encode(childrenJoints, forKey: .childrenJoints)
+        //try container.encode(parent, forKey: .parent)
+        try container.encode(descendantCount, forKey: .descendantCount)
+    }
+    
     
 }
 

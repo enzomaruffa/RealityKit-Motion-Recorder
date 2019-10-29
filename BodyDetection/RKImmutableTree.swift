@@ -9,7 +9,7 @@
 import RealityKit
 
 /// A tree representing an skeleton's joints
-class RKImmutableJointTree: Codable {
+class RKImmutableJointTree: Encodable {
     
     /// An optional RKJoint with the tree's root
     let rootJoint: RKImmutableJoint?
@@ -42,7 +42,7 @@ class RKImmutableJointTree: Codable {
                 ancestor.addChild(joint: immutableJoint)
                 
                 // Adds every child in the joint to the queue
-                jointQueue.append(contentsOf: joint.childrenJoints.map( { ($0, ancestor) } ))
+                jointQueue.append(contentsOf: joint.childrenJoints.map( { ($0, immutableJoint) } ))
             }
             
             print("RKImmutableJointTree created successfully!")
