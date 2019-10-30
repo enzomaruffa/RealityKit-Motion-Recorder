@@ -8,7 +8,7 @@
 
 import RealityKit
 
-class RKImmutableJoint: Encodable {
+class RKImmutableJoint: Codable {
     
     /// A String with the joint's name
     let name: String
@@ -93,7 +93,7 @@ class RKImmutableJoint: Encodable {
     }
     
     
-    
+    // ================== Codable stuff ===================
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -114,6 +114,21 @@ class RKImmutableJoint: Encodable {
         try container.encode(childrenJoints, forKey: .childrenJoints)
         //try container.encode(parent, forKey: .parent)
         try container.encode(descendantCount, forKey: .descendantCount)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        name = try values.decode(String.self, forKey: .name)
+        relativeTranslation = try values.decode(SIMD3<Float>.self, forKey: .relativeTranslation)
+        absoluteTranslation = try values.decode(SIMD3<Float>.self, forKey: .absoluteTranslation)
+        rotation = try values.decode(SIMD4<Float>.self, forKey: .rotation)
+        childrenJoints = try values.decode([RKImmutableJoint].self, forKey: .childrenJoints)
+        
+        for children in childrenJoints {
+            children.parent = self
+        }
+        
     }
     
     

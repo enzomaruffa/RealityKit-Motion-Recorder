@@ -9,7 +9,7 @@
 import RealityKit
 
 /// A tree representing an skeleton's joints
-class RKImmutableJointTree: Encodable {
+class RKImmutableJointTree: Codable {
     
     /// An optional RKJoint with the tree's root
     let rootJoint: RKImmutableJoint?

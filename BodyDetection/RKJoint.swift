@@ -34,9 +34,7 @@ class RKJoint: Codable {
         }
     }
     
-    /**
-        A computed property SIMD3<Float> with the joint's absolute position (relative to the scene anchor).
-     */
+    /** A computed property SIMD3<Float> with the joint's absolute position (relative to the scene anchor). */
     var absoluteTranslation: SIMD3<Float> {
         get {
             var defaultTranslation = SIMD3<Float>(0, 0, 0)
@@ -67,7 +65,7 @@ class RKJoint: Codable {
     var childrenJoints: [RKJoint]
     
     /// An optional parent  joint
-    var parent: RKJoint?
+    weak var parent: RKJoint?
 //    {
 //        didSet {
 //            if let parent = self.parent {
