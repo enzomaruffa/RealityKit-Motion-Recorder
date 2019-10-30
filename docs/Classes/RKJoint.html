@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RKJoint Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/RKJoint" class="dashAnchor"></a>
+    <a title="RKJoint Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (48% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        RKJoint Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MessageLabel.html">MessageLabel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RKImmutableJoint.html">RKImmutableJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RKImmutableJoint/CodingKeys.html">– CodingKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RKImmutableJointTree.html">RKImmutableJointTree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RKJoint.html">RKJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RKJointTree.html">RKJointTree</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewController.html">ViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/MeshResource.html">MeshResource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:15Motion_Recorder1poiyAA11RKJointTreeCSgAD_ADtF">+(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>RKJoint</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RKJoint</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                </div>
+              </div>
+            <p>A class representing a single joint</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A String with the joint&rsquo;s name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC19relativeTranslations5SIMD3VySfGvp"></a>
+                    <a name="//apple_ref/swift/Property/relativeTranslation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC19relativeTranslations5SIMD3VySfGvp">relativeTranslation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A calculated SIMD3<Float> with the joint&rsquo;s position relative to it&rsquo;s parent. Uses a moving window of size 9.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">relativeTranslation</span><span class="p">:</span> <span class="kt">SIMD3</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC20relativeTranslationsSays5SIMD3VySfGGvp"></a>
+                    <a name="//apple_ref/swift/Property/relativeTranslations" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC20relativeTranslationsSays5SIMD3VySfGGvp">relativeTranslations</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A list with every last 9 relative joint translation snapshots. Used as a moving window for the relative translation property.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">relativeTranslations</span><span class="p">:</span> <span class="p">[</span><span class="kt">SIMD3</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC19absoluteTranslations5SIMD3VySfGvp"></a>
+                    <a name="//apple_ref/swift/Property/absoluteTranslation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC19absoluteTranslations5SIMD3VySfGvp">absoluteTranslation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A computed property SIMD3<Float> with the joint&rsquo;s absolute position (relative to the scene anchor).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">absoluteTranslation</span><span class="p">:</span> <span class="kt">SIMD3</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC8rotations5SIMD4VySfGvp"></a>
+                    <a name="//apple_ref/swift/Property/rotation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC8rotations5SIMD4VySfGvp">rotation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A computed property SIMD4<Float> with the joint&rsquo;s position relative to it&rsquo;s parent. Uses a moving window of size 9.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">rotation</span><span class="p">:</span> <span class="kt">SIMD4</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC9rotationsSays5SIMD4VySfGGvp"></a>
+                    <a name="//apple_ref/swift/Property/rotations" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC9rotationsSays5SIMD4VySfGGvp">rotations</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A list with every last 9 joint rotation snapshots. Used as a moving window for the rotation property.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">rotations</span><span class="p">:</span> <span class="p">[</span><span class="kt">SIMD4</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC14childrenJointsSayACGvp"></a>
+                    <a name="//apple_ref/swift/Property/childrenJoints" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC14childrenJointsSayACGvp">childrenJoints</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A list of the joint&rsquo;s children</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">childrenJoints</span><span class="p">:</span> <span class="p">[</span><span class="kt">RKJoint</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC6parentACSgvp"></a>
+                    <a name="//apple_ref/swift/Property/parent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC6parentACSgvp">parent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An optional parent joint. Stored as a weak reference to prevent cycles</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">weak</span> <span class="k">var</span> <span class="nv">parent</span><span class="p">:</span> <span class="kt">RKJoint</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC15descendantCountSivp"></a>
+                    <a name="//apple_ref/swift/Property/descendantCount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC15descendantCountSivp">descendantCount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The amount of descendants this joint has, recursevely calculated by each children.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">descendantCount</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC9jointName8rotation19relativeTranslationACSS_s5SIMD4VySfGs5SIMD3VySfGtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(jointName:rotation:relativeTranslation:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC9jointName8rotation19relativeTranslationACSS_s5SIMD4VySfGs5SIMD3VySfGtcfc">init(jointName:rotation:relativeTranslation:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a joint using it&rsquo;s name, rotation and relative translation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">jointName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">rotation</span><span class="p">:</span> <span class="kt">SIMD4</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">relativeTranslation</span><span class="p">:</span> <span class="kt">SIMD3</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC5jointACSS_10RealityKit9TransformVt_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(joint:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC5jointACSS_10RealityKit9TransformVt_tcfc">init(joint:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a joint using it&rsquo;s name and transform as a tuple</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">joint</span><span class="p">:</span> <span class="p">(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Transform</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>joint</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A tuple with the joint&rsquo;s name and transform</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC9jointName8rotation19relativeTranslationACSS_So10simd_quatfas5SIMD3VySfGtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(jointName:rotation:relativeTranslation:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC9jointName8rotation19relativeTranslationACSS_So10simd_quatfas5SIMD3VySfGtcfc">init(jointName:rotation:relativeTranslation:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">jointName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">rotation</span><span class="p">:</span> <span class="n">simd_quatf</span><span class="p">,</span> <span class="nv">relativeTranslation</span><span class="p">:</span> <span class="kt">SIMD3</span><span class="o">&lt;</span><span class="kt">Float</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC8addChild5jointySS_10RealityKit9TransformVt_tF"></a>
+                    <a name="//apple_ref/swift/Method/addChild(joint:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC8addChild5jointySS_10RealityKit9TransformVt_tF">addChild(joint:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates and adds a joint as a child based on a tuple of a String and a Transform</p>
+<div class="aside aside-todo">
+    <p class="aside-title">Todo</p>
+    Store every Transform property instead of just the translation
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addChild</span><span class="p">(</span><span class="nv">joint</span><span class="p">:</span> <span class="p">(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Transform</span><span class="p">))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>joint</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A tuple with the joint&rsquo;s name and translation</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC8addChild5jointyAC_tF"></a>
+                    <a name="//apple_ref/swift/Method/addChild(joint:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC8addChild5jointyAC_tF">addChild(joint:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates and adds a joint as a child based on it&rsquo;s name and translation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addChild</span><span class="p">(</span><span class="nv">joint</span><span class="p">:</span> <span class="kt">RKJoint</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>joint</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An RKJoint with the to be children joint</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC14findChildrenBy4nameACSgSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/findChildrenBy(name:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC14findChildrenBy4nameACSgSS_tF">findChildrenBy(name:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Searchs for a joint on this joint&rsquo;s children by name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">findChildrenBy</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RKJoint</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The searched joint&rsquo;s name</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The searched joint if it was found. nil if no proper joint was found.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC16findDescendantBy4nameACSgSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/findDescendantBy(name:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC16findDescendantBy4nameACSgSS_tF">findDescendantBy(name:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Searchs for a joint on this joint&rsquo;s descendants by name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">findDescendantBy</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RKJoint</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The searched joint&rsquo;s name</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The searched joint if it was found. nil if no proper joint was found.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC22findSelfOrDescendantBy4nameACSgSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/findSelfOrDescendantBy(name:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC22findSelfOrDescendantBy4nameACSgSS_tF">findSelfOrDescendantBy(name:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Searchs for a joint on this joint&rsquo;s descendants by name, but also checks if this joint is the searched one</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">findSelfOrDescendantBy</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RKJoint</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The searched joint&rsquo;s name</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The searched joint if it was found. nil if no proper joint was found.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC12isEquivalent2toSbAC_tF"></a>
+                    <a name="//apple_ref/swift/Method/isEquivalent(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC12isEquivalent2toSbAC_tF">isEquivalent(to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks the equivalence between two joints</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">isEquivalent</span><span class="p">(</span><span class="n">to</span> <span class="nv">other</span><span class="p">:</span> <span class="kt">RKJoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a Bool with the comparison result</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC9copyJoint12withChildrenACSb_tF"></a>
+                    <a name="//apple_ref/swift/Method/copyJoint(withChildren:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC9copyJoint12withChildrenACSb_tF">copyJoint(withChildren:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Copies a joint</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">copyJoint</span><span class="p">(</span><span class="nv">withChildren</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RKJoint</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withChildren</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A boolean describing if it should copy children</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The joint&rsquo;s copy</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15Motion_Recorder7RKJointC6update12newTransform24usingAbsoluteTranslationy10RealityKit0F0V_SbtF"></a>
+                    <a name="//apple_ref/swift/Method/update(newTransform:usingAbsoluteTranslation:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15Motion_Recorder7RKJointC6update12newTransform24usingAbsoluteTranslationy10RealityKit0F0V_SbtF">update(newTransform:usingAbsoluteTranslation:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="nv">newTransform</span><span class="p">:</span> <span class="kt">Transform</span><span class="p">,</span> <span class="nv">usingAbsoluteTranslation</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s23CustomStringConvertibleP11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s23CustomStringConvertibleP11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-10-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

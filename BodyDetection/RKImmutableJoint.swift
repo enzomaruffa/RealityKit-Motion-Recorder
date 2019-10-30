@@ -8,17 +8,19 @@
 
 import RealityKit
 
+/// A class representing a single immutable joint
 class RKImmutableJoint: Codable {
     
-    /// A String with the joint's name
+    /// An immutable String with the joint's name
     let name: String
     
-    /// A SIMD3<Float> with the joint's position relative to it's parent
+    /// An immutable SIMD3<Float> with the joint's position relative to it's parent
     let relativeTranslation: SIMD3<Float>
     
+    /// An immutable SIMD3<Float> with the absoulute joint's position
     let absoluteTranslation: SIMD3<Float>
     
-    /// A SIMD4<Float> with the joint's position relative to it's parent
+    /// An immutable SIMD4<Float> with the joint's position relative to it's parent
     let rotation: SIMD4<Float>
     
     /// A list of the joint's children
@@ -42,13 +44,15 @@ class RKImmutableJoint: Codable {
         self.parent = parent
     }
     
+    /// Initializes the immutable joint using information from a RKJoint
+    /// - Parameter joint: a RKJoint that contains a name, relative and absolute translation, a rotation. No children or parent is created.
     convenience init(joint: RKJoint) {
         self.init(name: joint.name, relativeTranslation: joint.relativeTranslation, absoluteTranslation: joint.absoluteTranslation, rotation: joint.rotation, childrenJoints: [], parent: nil)
     }
     
     /// Creates and adds a joint as a child based on it's name and translation
    /// - Parameter joint: An RKImmutableJoint with the to be children joint
-   func addChild(joint: RKImmutableJoint) {
+   internal func addChild(joint: RKImmutableJoint) {
        // Checks if the joint to be added already has a parent
        if let oldParent = joint.parent {
            oldParent.childrenJoints.removeAll(where: { $0.name == joint.name} )

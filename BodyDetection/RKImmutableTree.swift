@@ -8,7 +8,7 @@
 
 import RealityKit
 
-/// A tree representing an skeleton's joints
+/// An immutable tree representing an skeleton's joints
 class RKImmutableJointTree: Codable {
     
     /// An optional RKJoint with the tree's root

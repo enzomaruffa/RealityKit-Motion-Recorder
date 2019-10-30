@@ -1,0 +1,12 @@
+version: "Apple Swift version 5.1.1 (swiftlang-1100.0.274.1 clang-1100.0.33.9)"
+options: "1032893c2747972420c8b481e9077f1f"
+build_time: [1572440560, 113364000]
+inputs:
+  "/Users/enzomaruffa/Documents/academy/minichallenges/minichallenge-2/Motion Recorder/BodyDetection/Utilities.swift": [9223372036, 854775807]
+  "/Users/enzomaruffa/Documents/academy/minichallenges/minichallenge-2/Motion Recorder/BodyDetection/RKJointTree.swift": [9223372036, 854775807]
+  "/Users/enzomaruffa/Documents/academy/minichallenges/minichallenge-2/Motion Recorder/BodyDetection/RKJoint.swift": [9223372036, 854775807]
+  "/Users/enzomaruffa/Documents/academy/minichallenges/minichallenge-2/Motion Recorder/BodyDetection/ViewController.swift": [9223372036, 854775807]
+  "/Users/enzomaruffa/Documents/academy/minichallenges/minichallenge-2/Motion Recorder/BodyDetection/MessageLabel.swift": [9223372036, 854775807]
+  "/Users/enzomaruffa/Documents/academy/minichallenges/minichallenge-2/Motion Recorder/BodyDetection/RKImmutableTree.swift": [9223372036, 854775807]
+  "/Users/enzomaruffa/Documents/academy/minichallenges/minichallenge-2/Motion Recorder/BodyDetection/AppDelegate.swift": [9223372036, 854775807]
+  "/Users/enzomaruffa/Documents/academy/minichallenges/minichallenge-2/Motion Recorder/BodyDetection/RKImmutableJoint.swift": [9223372036, 854775807]

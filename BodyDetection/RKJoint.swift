@@ -8,14 +8,15 @@
 
 import RealityKit
 
-/// A class representing a single joint
+/// A class representing a single mutable joint
 class RKJoint: Codable {
     
     /// A String with the joint's name
     let name: String
     
-    /// A SIMD3<Float> with the joint's position relative to it's parent
+    /// A calculated SIMD3<Float> with the joint's position relative to it's parent. Uses a moving window of size 9.
     var relativeTranslation: SIMD3<Float> {
+        // Get our list with previous values
         let totalValues = relativeTranslations.reduce(SIMD3<Float>.zero, { $0 + $1 } )
         let count = Float(relativeTranslations.count)
         return SIMD3<Float>(x: totalValues.x / count, y: totalValues.y / count, z: totalValues.z / count)
@@ -26,6 +27,7 @@ class RKJoint: Codable {
 //        }
 //    }
     
+    /// A list with every last 9 relative joint translation snapshots. Used as a moving window for the relative translation property.
     var relativeTranslations: [SIMD3<Float>] = [] {
         didSet {
             if relativeTranslations.count > 9 {
@@ -45,13 +47,14 @@ class RKJoint: Codable {
         }
     }
     
-    /// A SIMD4<Float> with the joint's position relative to it's parent
+    /// A computed property SIMD4<Float> with the joint's position relative to it's parent. Uses a moving window of size 9.
     var rotation: SIMD4<Float> {
         let totalValues = rotations.reduce(SIMD4<Float>.zero, { $0 + $1 } )
         let count = Float(rotations.count)
         return SIMD4<Float>(x: totalValues.x / count, y: totalValues.y / count, z: totalValues.z / count, w: totalValues.w / count)
     }
     
+    /// A list with every last 9 joint rotation snapshots. Used as a moving window for the rotation property.
     var rotations: [SIMD4<Float>] = [] {
         didSet {
             if rotations.count > 9 {
@@ -61,10 +64,10 @@ class RKJoint: Codable {
     }
 
     
-    /// A list of the joint's childreni
+    /// A list of the joint's children
     var childrenJoints: [RKJoint]
     
-    /// An optional parent  joint
+    /// An optional parent joint. Stored as a weak reference to prevent cycles
     weak var parent: RKJoint?
 //    {
 //        didSet {
@@ -80,10 +83,13 @@ class RKJoint: Codable {
         return childrenJoints.reduce(0, { $0 + $1.descendantCount }) + childrenJoints.count
     }
     
-    /// Initializes a joint using it's name, rotation and translation
-    init(jointName: String, rotation: SIMD4<Float>, translation: SIMD3<Float>) {
+    /// Initializes a joint using it's name, rotation and relative translation
+    /// - Parameter jointName: A string with the joint's name
+    /// - Parameter rotation: A SIMD4<Float> with the joint's rotation. xyz is the imaginary part, whilst the w is the real.
+    /// - Parameter relativeTranslation: A SIMD3<Float> with the joint's relative translation
+    init(jointName: String, rotation: SIMD4<Float>, relativeTranslation: SIMD3<Float>) {
         self.name = jointName
-        self.relativeTranslations = [translation]
+        self.relativeTranslations = [relativeTranslation]
         self.rotations = [rotation]
         self.childrenJoints = []
     }
@@ -91,11 +97,15 @@ class RKJoint: Codable {
     /// Initializes a joint using it's name and transform as a tuple
     /// - Parameter joint: A tuple with the joint's name and transform
     convenience init(joint: (String, Transform)) {
-        self.init(jointName: joint.0, rotation: SIMD4<Float>(joint.1.rotation.imag, joint.1.rotation.real), translation: joint.1.translation)
+        self.init(jointName: joint.0, rotation: SIMD4<Float>(joint.1.rotation.imag, joint.1.rotation.real), relativeTranslation: joint.1.translation)
     }
     
-    convenience init(jointName: String, rotation: simd_quatf, translation: SIMD3<Float>) {
-        self.init(jointName: jointName, rotation: SIMD4<Float>(rotation.imag, rotation.real), translation: translation)
+    /// Initializes a joint using it's name, rotation and relative translation
+    /// - Parameter jointName: A string with the joint's name
+    /// - Parameter rotation: A simd_quatf with the joint's rotation
+    /// - Parameter relativeTranslation: A SIMD3<Float> with the joint's relative translation
+    convenience init(jointName: String, rotation: simd_quatf, relativeTranslation: SIMD3<Float>) {
+        self.init(jointName: jointName, rotation: SIMD4<Float>(rotation.imag, rotation.real), relativeTranslation: relativeTranslation)
     }
     
     
@@ -138,7 +148,7 @@ class RKJoint: Codable {
         
         // Searches for a descentand in our children, find the first non nil and return it
         let returnJoint = childrenJoints.map( { $0.findDescendantBy(name: name)} ).filter( {$0 != nil} ).first
-        return returnJoint ?? nil //TODO: Entender esse RKJoint??
+        return returnJoint ?? nil
         
     }
     
@@ -154,6 +164,7 @@ class RKJoint: Codable {
     }
     
     /// Checks the equivalence between two joints
+    /// - Parameter to other: The joint that "self" will be compared to
     /// - Returns: a Bool with the comparison result
     func isEquivalent(to other: RKJoint) -> Bool {
         
@@ -177,11 +188,11 @@ class RKJoint: Codable {
     }
     
     /// Copies a joint
-    /// - Parameter withChildren: A boolean describing if it should copy children
+    /// - Parameter withChildren: A boolean describing if it should copy also children
     /// - Returns: The joint's copy
     func copyJoint(withChildren: Bool) -> RKJoint {
         // Copies the original joint
-        let newJoint = RKJoint(jointName: self.name, rotation: self.rotation, translation: self.relativeTranslation)
+        let newJoint = RKJoint(jointName: self.name, rotation: self.rotation, relativeTranslation: self.relativeTranslation)
         
         if !withChildren {
             return newJoint
@@ -195,6 +206,10 @@ class RKJoint: Codable {
         return newJoint
     }
     
+    
+    /// Updates a joint's values
+    /// - Parameter newTransform: The new transform
+    /// - Parameter usingAbsoluteTranslation: A Bool describing if the new transform uses relative or absolute values
     func update(newTransform: Transform, usingAbsoluteTranslation: Bool) {
 
         if usingAbsoluteTranslation {

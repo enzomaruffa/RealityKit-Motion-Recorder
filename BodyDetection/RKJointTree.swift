@@ -23,15 +23,19 @@ class RKJointTree: Codable {
         return nil
     }
     
+    /// A Bool describing if the tree is updateable. *true* by default
     var canUpdate = true
     
-    ///
+    /// Initializes an empty tree
     init() { }
     
+    /// Initializes a tree with only the root joint.
+    /// - Parameter rootJoint: A tuple with the joint's name and translation
     init(rootJoint: (String, Transform)) {
         self.rootJoint = RKJoint(joint: rootJoint)
     }
     
+    /// Initializes a tree based on a list of joints
     // Every joint must have a unique name
     init(from list: [(String, Transform)], usingAbsoluteTranslation: Bool) {
         
@@ -72,10 +76,10 @@ class RKJointTree: Codable {
                 } else {
                     
                     if usingAbsoluteTranslation {
-                        let childJoint = RKJoint(jointName: jointName ?? "(nil)", rotation: joint.1.rotation, translation: joint.1.translation - ancestorJoint.absoluteTranslation)
+                        let childJoint = RKJoint(jointName: jointName ?? "(nil)", rotation: joint.1.rotation, relativeTranslation: joint.1.translation - ancestorJoint.absoluteTranslation)
                         ancestorJoint.addChild(joint: childJoint)
                     } else {
-                        let childJoint = RKJoint(jointName: jointName ?? "(nil)", rotation: joint.1.rotation, translation: joint.1.translation)
+                        let childJoint = RKJoint(jointName: jointName ?? "(nil)", rotation: joint.1.rotation, relativeTranslation: joint.1.translation)
                         ancestorJoint.addChild(joint: childJoint)
                     }
                 }
@@ -107,6 +111,7 @@ class RKJointTree: Codable {
         
     }
     
+    /// Prints the jointTree using a breadth-first search
     func printJointsBFS() {
         var jointQueue: [RKJoint] = []
         
@@ -145,23 +150,3 @@ class RKJointTree: Codable {
         return newTree
     }
 }
-
-
-/// + operator overloading to allow the sum of two RKJointTree
-/// - Parameter left: The leftmost tree
-/// - Parameter right: the rightmost tree
-/// - Returns: A new tree if the trees are equivalent.  Otherwise, returns  nil
-func + (left: RKJointTree, right: RKJointTree) -> RKJointTree? {
-    // Sum two trees only if they have the same structure
-    if left.isEquivalent(to: right) {
-        
-        // We first copy the left tree
-        let copiedTree = left.copy()
-        
-        // Then we operate on it's nodes and the second tree
-        //TODO: Acabar a diferença entre funções
-    }
-    
-    return nil
-}
-
