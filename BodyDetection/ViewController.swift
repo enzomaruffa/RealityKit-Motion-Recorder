@@ -29,6 +29,8 @@ class ViewController: UIViewController, ARSessionDelegate {
     
     var timerUpdater: Timer?
     
+    var shouldUpdateTree = true
+    
     @IBOutlet weak var recordButton: UIButton!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,37 +67,15 @@ class ViewController: UIViewController, ARSessionDelegate {
                 print("Error: Unable to load model as BodyTrackedEntity")
             }
         })
+        
+        timerUpdater = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (_) in
+            shouldUpdateTree = true
+        })
     }
     
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
         for anchor in anchors {
             guard let bodyAnchor = anchor as? ARBodyAnchor else { continue }
-            
-            if timerUpdater == nil {
-                
-                print("Creating timer")
-                
-                timerUpdater = Timer.scheduledTimer(withTimeInterval: 0.22, repeats: true, block: { (_) in
-                    
-                    print("Running timer")
-                    
-                    if let character = self.character, let characterTree = self.characterTree {
-                        
-                        let jointModelTransforms = bodyAnchor.skeleton.jointModelTransforms.map( { Transform(matrix: $0) })
-                        let jointNames = character.jointNames
-                        
-                        let joints = Array(zip(jointNames, jointModelTransforms))
-                        
-                        characterTree.updateJoints(from: joints, usingAbsoluteTranslation: true)
-                        
-//                        characterTree.printJointsBFS()
-                        
-                    }
-                    
-                })
-                
-                timerUpdater?.fire()
-            }
             
             // Update the position of the character anchor's position.
             let bodyPosition = simd_make_float3(bodyAnchor.transform.columns.3)
@@ -117,6 +97,22 @@ class ViewController: UIViewController, ARSessionDelegate {
                 let joints = Array(zip(jointNames, jointModelTransforms))
                 characterTree = RKJointTree(from: joints, usingAbsoluteTranslation: true)
             }
+            
+            if shouldUpdateTree {
+                if let character = self.character, let characterTree = self.characterTree {
+                    
+                    shouldUpdateTree = false
+                    
+                    let jointModelTransforms = bodyAnchor.skeleton.jointModelTransforms.map( { Transform(matrix: $0) })
+                    let jointNames = character.jointNames
+                    
+                    let joints = Array(zip(jointNames, jointModelTransforms))
+                    
+                    characterTree.updateJoints(from: joints, usingAbsoluteTranslation: true)
+
+                }
+            }
+            
         }
     }
 
