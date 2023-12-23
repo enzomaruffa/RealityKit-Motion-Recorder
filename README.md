@@ -17,7 +17,7 @@ This app is being used to record movements in another project. I cannot guarante
 
 It also uses a very unoptimized tree to store the joints. If you'd like to refactor it and improve it's performance, go on :)
 
-Whatever you need, feel free to hit me up on Twitter: @enzolitos
+Whatever you need, feel free to hit me up.
 
 ---
 
